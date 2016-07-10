@@ -23,7 +23,9 @@ $(".left-side").click(function(e){
         var id = $(li).attr("data-key")
         var $dom = $("#"+id);
         if($dom.length){
-            $(window).scrollTop($dom.offset().top);
+            $('html,body').animate({
+                scrollTop: $dom.offset().top
+            }, 400);
         }
     }
 });
