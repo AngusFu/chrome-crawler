@@ -58,18 +58,20 @@ function initData() {
         $content.append(`<ul class="mb-nav" id="dom_${index}"></ul>`);
 
         var info = null;
+        try {
+            info = JSON.parse(store.get(id));
+        } catch (e) {}
 
-        if (info = JSON.parse(store.get(id))) {
+        if (info) {
             updateContent(index, id, info, this);
             console.log('[', id, '] use cache');
-
             return;
         }
 
 
         $('.wrap, .tools').hide();
         $('#loader').show();
-        
+
         $.get(this.url, function(data) {
             var info = [];
             var div =  document.createElement('div');
