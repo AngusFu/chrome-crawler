@@ -7,7 +7,7 @@
 
 - 基于 ajax 请求 + jQury DOM parse
 
-- 创意来自 `whxaxes` 的(`node-test`项目)[https://github.com/whxaxes/node-test/tree/master/server/creeper]
+- 创意来自 `whxaxes` 的(node-test项目)[https://github.com/whxaxes/node-test/tree/master/server/creeper]
 
 - 为避免浪费请求，应用已经做了 10min 的缓存，如需刷新可以到点击页面提供的刷新按钮
 
