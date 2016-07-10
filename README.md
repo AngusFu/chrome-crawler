@@ -32,7 +32,7 @@
         }
     ```
 
-7. 添加自己喜欢的网页：修改 `./js/source.js`。
+7. 添加自己喜欢的网页：在`manifest.json`中的`permissions`字段下加入地址，同时修改 `./js/source.js`。
 
 ### 
 
