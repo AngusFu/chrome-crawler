@@ -6,6 +6,15 @@
     <title>博客爬虫</title>
     <link rel="stylesheet" href="./css/loader.css">
     <style>
+    /* Let's get this party started */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #e2b83d;
+    }
+
     html,
     body {
         margin: 0;
@@ -37,7 +46,7 @@
     }
     
     .mb-nav {
-        min-width: 600px;
+        width: 100%;
         margin-bottom: 30px;
     }
     
@@ -140,7 +149,7 @@
     
     .show-side .content {
         /*padding-left: 200px;*/
-        max-width: 600px;
+        width: 600px;
         margin: auto;
     }
 
@@ -165,6 +174,15 @@
     @media screen and (max-width: 1120px){
         .left-side {
             display: none;
+        }
+        .show-side .content {
+            width: 600px;
+        }
+    }
+
+    @media screen and (min-width: 1120px){
+        .show-side .content {
+            width: 900px;
         }
     }
 
@@ -204,7 +222,7 @@
         </div>
     </div>
     
-    <div class="tools">
+    <div class="tools hide">
         <div id="refresh"></div>   
         <div id="toTop"></div>   
     </div>

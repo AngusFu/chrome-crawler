@@ -78,7 +78,7 @@ setTimeout(function() {
         });
     });
 
-    $('.wrap').fadeIn(300);
+    $('.wrap, .tools').fadeIn(300);
     $('#loader').fadeOut(800);
 
     // ===========================================================
