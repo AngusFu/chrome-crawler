@@ -1,11 +1,46 @@
 
+window.URL = window.URL || window.webkitURL;
+
+
 // 延时 2.5 s
 // 避免浪费请求
-setTimeout(function() {
-    var $menu = $('.keys');
-    var $content = $('.content');
+setTimeout(initData, 1000 * 2.5);
 
-    window.URL = window.URL || window.webkitURL;
+pageVisibility.visibilitychange(function() {
+    if (!pageVisibility.hidden) {
+        initData();
+    }
+});
+
+var $wrap = $(".wrap");
+var $menu = $('.keys');
+var $content = $('.content');
+
+$(".left-side").click(function(e){
+    var li = e.target.tagName == "LI" ? e.target : (e.target.parentNode.tagName == "LI") ? e.target.parentNode : null
+
+    if(li){
+        var id = $(li).attr("data-key")
+        var $dom = $("#"+id);
+        if($dom.length){
+            $(window).scrollTop($dom.offset().top);
+        }
+    }
+});
+
+$('#refresh').click(function() {
+    store.clearAll();
+    location.reload();
+});
+
+$('#toTop').click(function() {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 400);
+});
+
+
+function initData() {
 
     $menu.empty();
     $content.empty();
@@ -31,6 +66,10 @@ setTimeout(function() {
             return;
         }
 
+
+        $('.wrap, .tools').hide();
+        $('#loader').show();
+        
         $.get(this.url, function(data) {
             var info = [];
             var div =  document.createElement('div');
@@ -81,33 +120,6 @@ setTimeout(function() {
     $('.wrap, .tools').fadeIn(300);
     $('#loader').fadeOut(800);
 
-    // ===========================================================
-    // 
-
-    var $wrap = $(".wrap");
-    $(".left-side").click(function(e){
-        var li = e.target.tagName == "LI" ? e.target : (e.target.parentNode.tagName == "LI") ? e.target.parentNode : null
-
-        if(li){
-            var id = $(li).attr("data-key")
-            var $dom = $("#"+id);
-            if($dom.length){
-                $(window).scrollTop($dom.offset().top);
-            }
-        }
-    });
-
-    $('#refresh').click(function() {
-        store.clearAll();
-        location.reload();
-    });
-
-    $('#toTop').click(function() {
-        $('html,body').animate({
-            scrollTop: 0
-        }, 400);
-    });
-
 
     function renderContent(info, source, id) {
 
@@ -135,4 +147,4 @@ setTimeout(function() {
             .html($("#dom_" + index + " li").length || 0);
     };
 
-}, 1000 * 2.5);
+}
