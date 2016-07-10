@@ -21,11 +21,11 @@
 
 3. 点击 `加载已解压的扩展程序...` 按钮，选择代码所在文件夹
 
-4. 找到扩展程序的 ID
+4. 打开方法1：点击扩展程序下的 `选项` 链接
 
-5. 地址栏中打开 `chrome-extension://{your_extension_id}/index.html`（可以加入到你的书签）
+5. 打开方法2：找到扩展程序的 ID，地址栏中打开 `chrome-extension://{your_extension_id}/index.html`（可以加入到你的书签）
 
-6. 如果不想使用打开地址的方式，还可以 override 你的 new tab 页。将`manifest.json`中的`"options_page": "index.html"`替换成下面的内容：
+6. 打开方法3：override 你的 new tab 页：将`manifest.json`中的`"options_page": "index.html"`替换成下面代码之后再安装 ——
     ```
         "chrome_url_overrides": {
              "newtab": "index.html"

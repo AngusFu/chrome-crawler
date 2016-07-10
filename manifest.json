@@ -61,7 +61,7 @@
             "./js/index.js",
             "./js/source.js",
             "./js/jquery.min.js",
-            "./js/store.js",
+            "./js/store.js"
         ]
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
