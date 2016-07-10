@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>博客爬虫</title>
+    <link rel="stylesheet" href="./css/loader.css">
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    * {
+        font-family: "微软雅黑";
+    }
+    
+    .wrap {
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 50px;
+    }
+    
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none !important;
+    }
+    
+    .content {
+        margin-top: 30px;
+        -webkit-transition: padding .3s;
+        transition: padding .3s;
+        padding-left: 15px;
+    }
+    
+    .mb-nav {
+        min-width: 600px;
+        margin-bottom: 30px;
+    }
+    
+    .mb-blog-name {
+        display: block;
+        margin: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        -webkit-transition: color .3s;
+        transition: color .3s;
+    }
+
+    .mb-item,
+    .no-data {
+        -webkit-transition: background-color .3s;
+        transition: background-color .3s;
+    }
+    
+    a {
+        outline: none;
+        color: #333;
+        text-decoration: none !important;
+    }
+    
+    .mb-item a {
+        display: block;
+        padding: 0 20px;
+        line-height: 30px;
+        -webkit-transition: padding .3s;
+    }
+    
+    .mb-item:hover a {
+        /*padding-left: 30px;*/
+    }
+    
+    .blog-time {
+        font-size: 13px;
+        float: right;
+    }
+    
+    .left-side {
+        position: fixed;
+        width: 200px;
+        top: 20px;
+        bottom: 20px;
+        left: 50px;
+        margin: auto;
+        z-index: 999;
+        -webkit-transition: -webkit-transform .3s;
+        transition: transform .3s;
+        -webkit-transform: translate3d(-185px, 0, 0);
+        transform: translate3d(-185px, 0, 0);
+        cursor: pointer;
+        overflow-y: auto;
+    }
+    
+    .keys {
+        margin-top: 30px;
+    }
+    
+    .close {
+        position: absolute;
+        display: none;
+        color: #eee;
+        width: 30px;
+        line-height: 30px;
+        right: 5px;
+        top: 5px;
+        text-align: center;
+    }
+    
+    .close:hover {
+        color: #FFF;
+    }
+    
+    .keys li {
+        display: block;
+        color: #333;
+        padding: 5px 10px;
+        opacity: .8;
+    }
+    
+    .keys li:hover {
+        opacity: 1;
+    }
+    
+    .keys .loading {
+        opacity: .2 !important;
+    }
+    /*显示左边栏*/
+    
+    .show-side .close {
+        display: block;
+    }
+    
+    .show-side .left-side {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    
+    .show-side .content {
+        /*padding-left: 200px;*/
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .hide {
+        display: none;
+    }
+    #loader {
+        position: absolute;
+        top: 50%;
+        bottom: 0;
+        right: 0;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    .load3 {
+        margin: 0;
+    }
+
+    @media screen and (max-width: 1120px){
+        .left-side {
+            display: none;
+        }
+    }
+
+    .tools {
+        position: fixed;
+        right: 60px;
+        bottom: 60px;
+    }
+    .tools > div {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        margin-top: 5px;
+        transition: all .5s;
+    }
+    #refresh {
+        background: #fff url(./img/refresh.png) center center no-repeat;
+        background-size: 50%;
+    }
+    #toTop {
+        background: #fff url(./img/top.png) center center no-repeat;
+        background-size: 50%;
+    }
+    .tools > div:hover {
+        opacity: .6;
+        transform: scale(1.1)
+    }
+    </style>
+</head>
+
+<body>
+    
+    <div id="loader">
+        <div class="load3">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+    
+    <div class="tools">
+        <div id="refresh"></div>   
+        <div id="toTop"></div>   
+    </div>
+
+    <div class="wrap show-side hide">
+        <div class="show-left-side"></div>
+        <div class="left-side">
+            <ul class="keys">
+                <li class="loading" data-key="dom_0">W3ctech&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_1">伯乐在线&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_2">EtherDream&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_3">阮一峰的js博文&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_4">月影&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_5">前端头条&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_6">前端观察&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_7">AlloyTeam&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_8">FEX&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_9">fequan&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_10">W3cplus&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_11">TangGuangYao&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_12">Web前端开发&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_13">Isux&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_14">Taobao FED&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_15">奇舞周刊&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_16">张鑫旭的博客&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_17">小胡子的new博客&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_18">小胡子的博客&nbsp;&nbsp;(<span class="count">0</span>)</li>
+                <li class="loading" data-key="dom_19">叶小钗的博客&nbsp;&nbsp;(<span class="count">0</span>)</li>
+            </ul>
+        </div>
+
+        <div class="content"></div>
+
+    </div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/store.js"></script>
+    <script src="./js/source.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
