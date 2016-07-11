@@ -120,7 +120,20 @@ var sourceList = {
 
     "月影": {
         url: 'https://www.h5jun.com/archives/',
-        colum: '.entry-content li',
+        colum: '.entry-content ul li',
+        handle: function($colum) {
+            return {
+                url: $colum.find("a").attr("href"),
+                title: $colum.find("a").text(),
+                time: $colum.find("span").text()
+            }
+        }
+    },
+
+
+    "QuQu": {
+        url: 'https://imququ.com/archives.html',
+        colum: '.entry-content > ul li',
         handle: function($colum) {
             return {
                 url: $colum.find("a").attr("href"),
