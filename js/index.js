@@ -193,6 +193,29 @@ function parseData(data, source) {
     var $columns = $(div).find(source.colum);
     var temp = null;
 
+    var $colum = null;
+    // 如果是 localStorage 中配置的
+    if (source._c_) {
+    console.log(source.max);
+        for (var i = 0, len = $columns.length; i < len && i < (source.max || 10); i++) {
+            $colum = $columns.eq(i);
+
+            temp = {
+                url: $colum.find(source.link).attr('href'),
+                title: $colum.find(source.title).text(),
+                time: source.time && $colum.find(source.time).text() || '',
+            };
+
+            if (!/^http/.test(temp.url)) {
+                temp.url = (new URL(temp.url, source.url)).href;
+            }
+
+            info.push(temp);
+        }
+
+        return info;
+    } 
+
     for (var i = 0, len = $columns.length; i < len && i < (source.max || 10); i++) {
 
         temp = source.handle.call(source, $columns.eq(i));

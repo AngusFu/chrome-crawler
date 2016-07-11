@@ -206,12 +206,50 @@
         background: #fff url(./img/top.png) center center no-repeat;
         background-size: 50%;
     }
+    #addRes {
+        background: #fff url(./img/add.png) center center no-repeat;
+        background-size: 50%;
+    }
     .tools > div:hover {
         opacity: .6;
         transform: scale(1.1)
     }
     .new {
         color: red !important;
+    }
+    #addPopCon {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(172, 172, 172, .8);
+    }
+    #addPop {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 480px;
+        margin-left: -300px;
+        margin-top: -240px;
+        background-color: #fff;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+    #addPop input {
+        display: block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        height: 30px;
+        padding: 0 15px;
+        font-size: 12px;
+        margin: 20px 0;
     }
     </style>
 </head>
@@ -226,7 +264,8 @@
     </div>
     
     <div class="tools hide">
-        <div id="refresh"></div>   
+        <div id="addRes"></div>
+        <div id="refresh"></div>
         <div id="toTop"></div>   
     </div>
 
@@ -240,11 +279,24 @@
 
     </div>
 
+    <div id="addPopCon">
+        <div id="addPop">
+            <input type="text" placeholder="网站名称" id="sietName">
+            <input type="text" placeholder="网站地址" id="siteURL">
+            <input type="text" placeholder="列选择器" id="siteColum">
+            <input type="text" placeholder="标题选择器" id="colTitle">
+            <input type="text" placeholder="链接选择器" id="colLink">
+            <input type="text" placeholder="时间选择器" id="colTime">
+            <input type="text" placeholder="最大数量" id="maxCount">
+            <button>确认提交</button>
+        </div>
+    </div>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/store.js"></script>
     <script src="./js/visiblity.js"></script>
     <script src="./js/source.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/add.js"></script>
 </body>
 
 </html>

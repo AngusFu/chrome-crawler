@@ -90,8 +90,8 @@
             set: function(key, val, exp) {
                 if (typeof(key) !== 'string') {
                     console.warn(key + ' used as a key, but it is not a string.');
-                    key = '' + key;
                 }
+                key = 'store_' + key;
                 if (val === undefined || val === null) {
                     return this.del(key);
                 }
@@ -117,7 +117,7 @@
             },
 
             _get: function(key) {
-                var item = _deserialize(this.storage.getItem(key));
+                var item = _deserialize(this.storage.getItem('store_' + key));
                 return item;
             },
             /**
@@ -126,6 +126,9 @@
              * @returns {*}
              */
             del: function(key) {
+                if (!/^store_/.test(key)) {
+                    key = 'store_' + key;
+                }
                 this.storage.removeItem(key);
                 return key;
             },
@@ -142,9 +145,10 @@
 
                 for (var i = 0; i < length; i++) {
                     var key = this.storage.key(i);
-
-                    if (!this.checkValid(key)) {
-                        caches.push(key);
+                    if (/^store_/.test(key)) {
+                        if (!this.checkValid(key)) {
+                            caches.push(key);
+                        }
                     }
                 }
                 caches.forEach(function(key) {
@@ -157,7 +161,19 @@
              *  清空缓存
              */
             clearAll: function() {
-                this.storage.clear();
+                var length = this.storage.length,
+                    caches = [],
+                    _this = this;
+
+                for (var i = 0; i < length; i++) {
+                    var key = this.storage.key(i);
+                    if (/^store_/.test(key)) {
+                        caches.push(key);
+                    }
+                }
+                caches.forEach(function(key) {
+                    _this.del(key);
+                });
             },
 
             checkValid: function(key) {

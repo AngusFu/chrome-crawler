@@ -76,17 +76,17 @@ var sourceList = {
         }
     },
 
-    "张鑫旭": {
-        url: "http://www.zhangxinxu.com/wordpress/",
-        colum: ".the_main .post",
-        handle: function($colum) {
-            return {
-                url: $colum.find(".entry-title").attr("href"),
-                title: $colum.find(".entry-title").text(),
-                time: $colum.find(".date").text()
-            }
-        }
-    },
+    // "张鑫旭": {
+    //     url: "http://www.zhangxinxu.com/wordpress/",
+    //     colum: ".the_main .post",
+    //     handle: function($colum) {
+    //         return {
+    //             url: $colum.find(".entry-title").attr("href"),
+    //             title: $colum.find(".entry-title").text(),
+    //             time: $colum.find(".date").text()
+    //         }
+    //     }
+    // },
 
     "小胡子": {
         url: 'http://barretlee.com/blog/archives/',
@@ -291,12 +291,23 @@ var sourceList = {
     },
 };
 
+// 从 localStorage 中读取用户自定义的配置
+//    _c_: true
+//    url: 'http://xxx.com/blog'
+//    colum: '.colum'
+//    title: '.xxx a'
+//    time: '.xxx span'
+//    link: '.xxx a'
+//    max: 10
+var cacheData = JSON.parse(localStorage['__user__data__'] || '{}');
+$.extend(sourceList, cacheData);
+
 var source = {};
 var l = 0;
 source.keys = [];
 for (var k in sourceList) {
     source.keys.push(k);
-    sourceList[k].max = 10;
+    sourceList[k].max = sourceList[k].max || 10;
     l++;
 }
 source.length = l;
