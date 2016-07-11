@@ -203,12 +203,10 @@ function parseData(data, source) {
  * 生成内容
  */
 function getRenderContent(info, source, id) {
-
     var titleText = `<a href="${source.url}" target="_blank" class="mb-blog-name">${id}</a>`;
     var linksText = info.reduce(function(prev, curr) {
         return prev + `<li class="mb-item">
-            <a href="${curr.url}" target="_blank" class="mb-title">
-                ${curr._is_new_ ? '<b>[new]</b>' : ''}
+            <a href="${curr.url}" target="_blank" class="mb-title ${curr._is_new_ ? 'new' : ''}">
                 ${curr.title}
                 <span class="blog-time">${curr.time}</span>
             </a>
@@ -226,8 +224,13 @@ function updateDOMContent(index, id, info, source) {
 
     $('#dom_' + index).empty().html(content);
 
+    var isAnyNew = info.some(function(item) {
+        return item._is_new_;
+    });
+
     $menu.find('[data-key="dom_' + index + '"]')
         .removeClass("loading")
+        .addClass(isAnyNew ? 'new' : '')
         .find(".count")
         .html($("#dom_" + index + " li").length || 0);
 };
