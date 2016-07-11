@@ -162,7 +162,6 @@
 
             checkValid: function(key) {
                 var item = this._get(key);
-                debugger
                 if (item && item.e) {
                     if (new Date().getTime() >= item.e) {
                         return false;
