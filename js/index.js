@@ -196,7 +196,6 @@ function parseData(data, source) {
     var $colum = null;
     // 如果是 localStorage 中配置的
     if (source._c_) {
-    console.log(source.max);
         for (var i = 0, len = $columns.length; i < len && i < (source.max || 10); i++) {
             $colum = $columns.eq(i);
 
