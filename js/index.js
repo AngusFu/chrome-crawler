@@ -6,7 +6,7 @@ var $content = $('.content');
 // 初始化
 source.forEach(function(index, id){
     $menu.append(`
-        <li class="loading" data-key="dom_${index}">
+        <li data-key="dom_${index}">
             ${id}(<span class="count">0</span>)
         </li>
     `);
@@ -30,10 +30,10 @@ $(".left-side").click(function(e){
     }
 });
 
-// 刷新
+// 强制刷新
+// 不使用缓存
 $('#refresh').click(function() {
     store.clearAll();
-
     initData();
 });
 
@@ -75,7 +75,7 @@ function initData(noCacheRender) {
         var nowSource = this;
 
         var $menuLi = $menu.find('[data-key="dom_' + index + '"]');
-        $menuLi.addClass('loading');
+        $menuLi.removeClass('new');
 
         /**==================================================================
          * 
@@ -100,7 +100,7 @@ function initData(noCacheRender) {
         // 缓存过期  先清除掉
         store.del(id);
         // 对应数量置为 0
-        $menuLi.addClass('loading').find('.count').text(0);
+        $menuLi.find('.count').text(0);
 
         $('.wrap, .tools').hide();
         $('#loader').show();
@@ -241,7 +241,6 @@ function updateDOMContent(index, id, info, source) {
     });
 
     $menu.find('[data-key="dom_' + index + '"]')
-        .removeClass("loading")
         .addClass(isAnyNew ? 'new' : '')
         .find(".count")
         .html($("#dom_" + index + " li").length || 0);
