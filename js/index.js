@@ -33,6 +33,7 @@ $(".left-side").click(function(e){
 // 刷新
 $('#refresh').click(function() {
     store.clearAll();
+
     initData();
 });
 
@@ -44,10 +45,6 @@ $('#toTop').click(function() {
 });
 
 
-// 延时 2.5 s
-// 避免浪费请求
-setTimeout(initData, 1000 * 2.5);
-
 // 页面显示隐藏时刷新
 pageVisibility.visibilitychange(function() {
     if (!pageVisibility.hidden) {
@@ -55,6 +52,14 @@ pageVisibility.visibilitychange(function() {
     }
 });
 
+// 延时 1 s
+// 避免浪费请求
+setTimeout(function() {
+    // 刷新数据并回到顶部
+    initData().then(function() {
+        $('#toTop').trigger('click');
+    });
+}, 1000);
 
 
 function initData() {
@@ -122,8 +127,7 @@ function initData() {
     });
 
     // 都完成之后才显示
-    $.when(promises).done(function() {
-        $('#toTop').trigger('click');
+    return $.when(promises).then(function() {
         $('.wrap, .tools').fadeIn(300);
         $('#loader').fadeOut(400);
     });
