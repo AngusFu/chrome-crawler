@@ -56,13 +56,19 @@ pageVisibility.visibilitychange(function() {
 // 避免浪费请求
 setTimeout(function() {
     // 刷新数据并回到顶部
-    initData().then(function() {
+    initData(true).then(function() {
         $('#toTop').trigger('click');
     });
 }, 1000);
 
-
-function initData() {
+/**
+ * 
+ * @param  {Boolean} noCacheRender 使用缓存时候是否仍然强制重新渲染
+ * 
+ * @return {Promise}
+ * 
+ */
+function initData(noCacheRender) {
     var promises = [];
 
     source.forEach(function(index, id){
@@ -84,8 +90,10 @@ function initData() {
 
         // 缓存有效
         if (storeInfo && store.checkValid(id)) {
-           updateDOMContent(index, id, storeInfo, this);
-           console.log('[', id, '] use cache');
+            if (noCacheRender) {
+                updateDOMContent(index, id, storeInfo, this);
+                console.log('[', id, '] use cache');
+            }
            return;
         }
 
