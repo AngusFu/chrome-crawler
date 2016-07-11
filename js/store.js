@@ -74,10 +74,7 @@
         get: function() {},
         del: function() {},
         clearExp: function() {},
-        clearAll: function() {},
-        add: function() {},
-        setExp: function() {},
-        getExp: function() {}
+        clearAll: function() {}
     };
 
     if (_isSupported(_getStorage('localStorage'))) {
@@ -107,23 +104,22 @@
             },
 
             /**
-             * 获取缓存，如果已经过期，会主动删除缓存，并返回null
+             * 获取缓存
              * @param key 缓存名称
              * @returns {*} 缓存的值，默认已经做好序列化
              */
             get: function(key) {
-                var item = _deserialize(this.storage.getItem(key));
-                if (item !== null && item !== undefined) {
-                    var timeNow = new Date().getTime();
-                    if (timeNow < item.e) {
-                        return _deserialize(item.v);
-                    } else {
-                        this.del(key);
-                    }
+                var item = this._get(key);
+                if (item) {
+                    return _deserialize(item.v);
                 }
                 return null;
             },
 
+            _get: function(key) {
+                var item = _deserialize(this.storage.getItem(key));
+                return item;
+            },
             /**
              *  删除指定的缓存
              * @param key 要删除缓存的主键
@@ -139,17 +135,16 @@
              * @returns {Array}
              */
             clearExp: function() {
+
                 var length = this.storage.length,
                     caches = [],
                     _this = this;
-                for (var i = 0; i < length; i++) {
-                    var key = this.storage.key(i),
-                        item = _deserialize(this.get(key));
 
-                    if (item && !item.e) {
-                        if (new Date().getTime() >= item.e) {
-                            caches.push(key);
-                        }
+                for (var i = 0; i < length; i++) {
+                    var key = this.storage.key(i);
+
+                    if (!this.checkValid(key)) {
+                        caches.push(key);
                     }
                 }
                 caches.forEach(function(key) {
@@ -157,43 +152,25 @@
                 });
                 return caches;
             },
+
             /**
              *  清空缓存
              */
             clearAll: function() {
                 this.storage.clear();
             },
-            /**
-             * 添加一条缓存，如果已经存在同样名称的缓存，则不做任何处理
-             * @param key 缓存的名称
-             * @param value 缓存的值
-             * @param exp 过期时间 单位：秒
-             */
-            add: function(key, value, exp) {
-                if (this.get(key) === null || this.get(key) === undefined) {
-                    this.set(key, value, exp);
+
+            checkValid: function(key) {
+                var item = this._get(key);
+                if (item && item.e) {
+                    if (new Date().getTime() >= item.e) {
+                        return false;
+                    }  else {
+                        return true;
+                    }
                 }
-            },
-            /**
-             * 设置修改缓存的过期时间
-             * @param key 缓存的名称
-             * @param exp 新的过期时间 单位：秒
-             */
-            setExp: function(key, exp) {
-                var item = this.get(key);
-                if (item !== null && item !== undefined) {
-                    item.e = _getExpDate(exp, item.c);
-                    this.set(key, _serialize(item), exp);
-                }
-            },
-            /**
-             * 获取缓存的过期时间
-             * @param key 缓存的名称
-             * @returns {*} 单位：秒
-             */
-            getExp: function(key) {
-                var item = this.get(key);
-                return item && item.e;
+
+                return false;
             }
         }
     }

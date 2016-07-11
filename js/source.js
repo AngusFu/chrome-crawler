@@ -143,6 +143,15 @@ var sourceList = {
         }
     },
 
+    // 无能为力啊
+    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
+    // link:</assets/css/screen.css?v=24b6e847ee>; rel=preload; as=style
+    // link:<//www.qianduan.net/img/give-me-five/qianduan_wechat.jpg>; rel=preload; as=image
+    // link:<//www.qianduan.net/img/give-me-five/da-shang.jpg>; rel=preload; as=image
+    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
+    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
+    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
+    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
     "前端观察": {
         url: "https://www.qianduan.net/",
         colum: ".main-content .post",
