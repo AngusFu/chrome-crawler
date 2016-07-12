@@ -46,11 +46,11 @@ $('#toTop').click(function() {
 
 
 // 页面显示隐藏时刷新
-pageVisibility.visibilitychange(function() {
-    if (!pageVisibility.hidden) {
-        initData();
-    }
-});
+// pageVisibility.visibilitychange(function() {
+//     if (!pageVisibility.hidden) {
+//         initData();
+//     }
+// });
 
 // 延时 1 s
 // 避免浪费请求
@@ -74,9 +74,6 @@ function initData(noCacheRender) {
     source.forEach(function(index, id){
         var nowSource = this;
 
-        var $menuLi = $menu.find('[data-key="dom_' + index + '"]');
-        $menuLi.removeClass('new');
-
         /**==================================================================
          * 
          * 先进行缓存验证
@@ -97,10 +94,11 @@ function initData(noCacheRender) {
            return;
         }
 
+        var $menuLi = $menu.find('[data-key="dom_' + index + '"]');
+        $menuLi.removeClass('new').find('.count').text(0);
+
         // 缓存过期  先清除掉
         store.del(id);
-        // 对应数量置为 0
-        $menuLi.find('.count').text(0);
 
         $('.wrap, .tools').hide();
         $('#loader').show();

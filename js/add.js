@@ -32,7 +32,7 @@ $('#addPop button').click(function() {
         };
 
         localStorage['__user__data__'] = JSON.stringify(cacheData);
-        $('#refresh').trigger('click');
+        location.reload();
     } else {
         alert('输入有误!');
     }

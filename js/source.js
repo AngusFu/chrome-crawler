@@ -76,17 +76,17 @@ var sourceList = {
         }
     },
 
-    // "张鑫旭": {
-    //     url: "http://www.zhangxinxu.com/wordpress/",
-    //     colum: ".the_main .post",
-    //     handle: function($colum) {
-    //         return {
-    //             url: $colum.find(".entry-title").attr("href"),
-    //             title: $colum.find(".entry-title").text(),
-    //             time: $colum.find(".date").text()
-    //         }
-    //     }
-    // },
+    "张鑫旭": {
+        url: "http://www.zhangxinxu.com/wordpress/",
+        colum: ".the_main .post",
+        handle: function($colum) {
+            return {
+                url: $colum.find(".entry-title").attr("href"),
+                title: $colum.find(".entry-title").text(),
+                time: $colum.find(".date").text()
+            }
+        }
+    },
 
     "小胡子": {
         url: 'http://barretlee.com/blog/archives/',
@@ -299,7 +299,12 @@ var sourceList = {
 //    time: '.xxx span'
 //    link: '.xxx a'
 //    max: 10
-var cacheData = JSON.parse(localStorage['__user__data__'] || '{}');
+var cacheData = localStorage['__user__data__'];
+try {
+    cacheData = JSON.parse(cacheData);
+} catch (e) {
+    cacheData = {};
+}
 $.extend(sourceList, cacheData);
 
 var source = {};
