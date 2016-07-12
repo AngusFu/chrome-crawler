@@ -192,19 +192,19 @@ a {
     transition: all .5s;
 }
 #refresh {
-    background: #fff url(./img/refresh.png) center center no-repeat;
+    background: #fff url(../img/refresh.png) center center no-repeat;
     background-size: 50%;
 }
 #toTop {
-    background: #fff url(./img/top.png) center center no-repeat;
+    background: #fff url(../img/top.png) center center no-repeat;
     background-size: 50%;
 }
 #addRes {
-    background: #fff url(./img/add.png) center center no-repeat;
+    background: #fff url(../img/add.png) center center no-repeat;
     background-size: 50%;
 }
 #editRes {
-    background: #fff url(./img/edit.png) center center no-repeat;
+    background: #fff url(../img/edit.png) center center no-repeat;
     background-size: 50%;
 }
 .tools > div:hover {
