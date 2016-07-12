@@ -10,7 +10,13 @@ $('#addPopCon').on('click', function(e) {
     }
 });
 $('#addPop button').click(function() {
-    var cacheData = JSON.parse(localStorage['__user__data__'] || '{}');
+    var cacheData = localStorage['__user__data__'];
+
+    try {
+        cacheData = JSON.parse(cacheData || '{}');
+    } catch (e) {
+        cacheData = {};
+    }
 
     var name  = $('#sietName').val().trim(),
         url   = $('#siteURL').val().trim(),
