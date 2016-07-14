@@ -14,7 +14,12 @@ source.forEach(function(index, id){
     $content.append(`<ul class="mb-nav" id="dom_${index}"></ul>`);
 });
 
-
+$content.on('click', '.mb-title', function() {
+    var $this = $(this);
+    var id = $this.closest('ul').attr('id');
+    $this.removeClass('new');
+    $('[data-key="' + id + '"]').removeClass('new');
+});
 // 导航定位
 $(".left-side").click(function(e){
     var li = e.target.tagName == "LI" ? e.target : (e.target.parentNode.tagName == "LI") ? e.target.parentNode : null
