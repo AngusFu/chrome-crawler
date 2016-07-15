@@ -18,7 +18,8 @@
     </div>
     
     <div class="tools hide">
-        <div id="editRes hide"></div>
+        <div id="addRSS"></div>
+        <!-- <div id="editRes"></div> -->
         <div id="addRes"></div>
         <div id="refresh"></div>
         <div id="toTop"></div>   
@@ -34,25 +35,42 @@
 
     </div>
 
-    <div id="addPopCon">
+    <div id="addPopCon" class="trans-bg">
         <div id="addPop">
-            <input type="text" placeholder="网站名称" id="sietName">
-            <input type="text" placeholder="网站地址" id="siteURL">
-            <input type="text" placeholder="列选择器" id="siteColum">
-            <input type="text" placeholder="标题选择器" id="colTitle">
-            <input type="text" placeholder="链接选择器" id="colLink">
+            <h3>添加来源</h3>
+            <input type="text" placeholder="网站名称(必填)" id="sietName">
+            <input type="text" placeholder="网站地址(必填)" id="siteURL">
+            <input type="text" placeholder="列选择器(必填)" id="siteColum">
+            <input type="text" placeholder="标题选择器(必填)" id="colTitle">
+            <input type="text" placeholder="链接选择器(必填)" id="colLink">
             <input type="text" placeholder="时间选择器" id="colTime">
             <input type="text" placeholder="最大数量" id="maxCount">
             <button>确认提交</button>
         </div>
     </div>
+
+    <div id="rssPopCon" class="trans-bg">
+        <div id="rssPop">
+            <h3>添加 RSS 源</h3>
+            <input type="text" placeholder="网站名称(必填)" id="rssName">
+            <input type="text" placeholder="RSS 地址(必填)" id="rssURL">
+            <input type="text" placeholder="项目标志(rss.channel.entry)(必填)" id="rssRoute">
+            <input type="text" placeholder="标题 tag" id="rssTitle">
+            <input type="text" placeholder="时间 tag" id="rssTime">
+            <input type="text" placeholder="链接 tag" id="rssLink">
+            <input type="text" placeholder="最大数量" id="rssMax">
+            <button>确认提交</button>
+        </div>
+    </div>
     
     <script src="./js/jquery.min.js"></script>
+    <script src="./js/xml2json.js"></script>
     <script src="./js/store.js"></script>
     <!-- <script src="./js/visiblity.js"></script> -->
     <script src="./js/source.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/add.js"></script>
+    <script src="./js/rss.js"></script>
 </body>
 
 </html>

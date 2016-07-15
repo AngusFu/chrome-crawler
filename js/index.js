@@ -108,8 +108,12 @@ function initData(noCacheRender) {
         $('.wrap, .tools').hide();
         $('#loader').show();
 
-        promises[promises.length] = $.get(this.url).then(function(data) {
-            data = processData(data);
+        promises[promises.length] = $.ajax({
+            url: this.url,
+            method: 'get',
+            dataType: 'text'
+        }).done(function(data) {
+            data = nowSource['_r_'] && data || processData(data);
             info = parseData(data, nowSource);
 
             // 缓存 10 min
@@ -189,6 +193,65 @@ function parseData(data, source) {
     }
 
     var info = [];
+
+    // 如果是 localStorage 中配置的 rss
+    if (source._r_) {
+        var data = $.xml2json(data);
+        var keys = source.colum.trim().split('.');
+        var i = 0;
+
+        while (i < keys.length) {
+            if (data[keys[i]]) {
+                data = data[keys[i++]];
+            } else {
+                return info;
+            }
+        }
+        data = data.slice(0, source.max);
+        info = data.map(function(item) {
+            var cdata = /^\<\!\[CDARA\[(.+)\]\]>$/,
+                title = item[source.title] || '',
+                match = title.match(cdata);
+
+            var time = item[source.time];
+            if (!time) {
+                for (var k in item) {
+                    if ({}.hasOwnProperty.call(item, k)) {
+                        if (k.toLowerCase().indexOf('pub') === 0) {
+                            time = item[k];
+                            break;
+                        }
+                    }
+                }
+            }
+
+            var url = item[source.link];
+            if (url && typeof url !== 'string') {
+                url = url.$.href;
+            }
+
+
+            var timeParsed = null;
+
+            try {
+                timeParsed = Date.parse(time);
+            } catch (e){};
+            
+            if (timeParsed) {
+                time = (new Date(timeParsed)).toLocaleDateString();
+            }
+
+            var timeMatch = time.match(/\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/);
+            time = timeMatch && timeMatch[0] || '';
+            return {
+                url: url || '',
+                title: (match && match[1] || title).trim(),
+                time: time
+            };
+        });
+        return info;
+    }
+
     var div = document.createElement('div');
 
     div.innerHTML = data;
@@ -197,7 +260,7 @@ function parseData(data, source) {
     var temp = null;
 
     var $colum = null;
-    // 如果是 localStorage 中配置的
+    // 如果是 localStorage 中配置的 selector
     if (source._c_) {
         for (var i = 0, len = $columns.length; i < len && i < (source.max || 10); i++) {
             $colum = $columns.eq(i);
@@ -216,7 +279,7 @@ function parseData(data, source) {
         }
 
         return info;
-    } 
+    }
 
     for (var i = 0, len = $columns.length; i < len && i < (source.max || 10); i++) {
 

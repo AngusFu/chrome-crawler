@@ -207,6 +207,10 @@ a {
     background: #fff url(../img/edit.png) center center no-repeat;
     background-size: 50%;
 }
+#addRSS {
+    background: #fff url(../img/rss.png) center center no-repeat;
+    background-size: 50%;
+}
 .tools > div:hover {
     opacity: .6;
     transform: scale(1.1)
@@ -214,7 +218,8 @@ a {
 .new {
     color: red !important;
 }
-#addPopCon {
+.trans-bg {
+    z-index: 999;
     display: none;
     position: fixed;
     left: 0;
@@ -237,7 +242,7 @@ a {
     box-sizing: border-box;
     padding: 20px;
 }
-#addPop input {
+.trans-bg input {
     display: block;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -247,4 +252,18 @@ a {
     padding: 0 15px;
     font-size: 12px;
     margin: 20px 0;
+}
+#rssPop {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 480px;
+    margin-left: -300px;
+    margin-top: -240px;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
 }
