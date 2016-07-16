@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Creeper",
-    "description": "creeper",
-    "version": "0.1",
+    "name": "Blog Crawler",
+    "description": "Blog Crawler",
+    "version": "2.1",
     "permissions": [
         "tabs",
         "contextMenus",
@@ -12,14 +12,11 @@
         "webNavigation",
         "\u003Call_urls\u003E"
     ],
+    "browser_action": {
+        "default_icon": "./img/rss.png"
+    },
     "background": {
-        "scripts": [
-            "./js/index.js",
-            "./js/source.js",
-            "./js/jquery.min.js",
-            "./js/store.js",
-            "./js/visiblity.js"
-        ]
+        "scripts": ["background.js"]
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "options_page": "index.html"
