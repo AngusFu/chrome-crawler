@@ -43,8 +43,8 @@ var sourceList = {
             var time = TIME_REG_1.exec($colum.find('.date').text());
 
             return {
-                url: $colum.find('.tit a').attr('href'),
-                title: $colum.find('.tit a').text(),
+                url: $colum.find('a').attr('href'),
+                title: $colum.find('a .tit').text().replace(/\d{4}年\d{1,2}月\d{1,2}日\d{1,2}:\d{1,2}:\d{1,2}/, ''),
                 time: time && time[0] || ''
             }
         }
