@@ -206,12 +206,24 @@ var sourceList = {
     },
 
     "凹凸实验室": {
-        url: "https://aotu.io/atom.xml",
-        _r_: true,
-        colum: 'feed.entry',
-        title: 'title',
-        link: 'link',
-        time: 'updated'
+        url: "https://aotu.io/fragments/index/",
+        colum: '.mod-post',
+        handle: function($colum) {
+            var url = $colum.find("a").attr("href");
+            var time = url.match(time_reg);
+            return {
+                url: $colum.find("a").attr("href"),
+                title: $colum.find(".mod-post-tit").text(),
+                time: (time instanceof Array) ? time[0] : ""
+            }
+        }
+        // url: "https://aotu.io/atom.xml",
+        // _r_: true,
+        // colum: 'feed.entry',
+        // title: 'title',
+        // link: 'link',
+        // time: 'updated'
+
         // parse: function(data) {
         //     var a = /<template>var POSTS=(.+\]\}\])<\/template>/igm.exec(data);
         //     if (a && a[1]) {
