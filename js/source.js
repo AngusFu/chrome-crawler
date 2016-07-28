@@ -206,23 +206,28 @@ var sourceList = {
     },
 
     "凹凸实验室": {
-        url: "https://aotu.io/index.html",
-        parse: function(data) {
-            var a = /<template>var POSTS=(.+\]\}\])<\/template>/igm.exec(data);
-            if (a && a[1]) {
-                var fn = new Function('return (' + a[1] + ')');
-                var data = fn();
-                data = data.slice(0, 10);
-                data.forEach(function(item) {
-                    var time = (new Date(item['data'])).toLocaleString();
-                    time = time_reg.exec(time);
-                    item['time'] = time && time[0] || ''
-                });
-                return data;
-            }
+        url: "https://aotu.io/atom.xml",
+        _r_: true,
+        colum: 'feed.entry',
+        title: 'title',
+        link: 'link',
+        time: 'updated'
+        // parse: function(data) {
+        //     var a = /<template>var POSTS=(.+\]\}\])<\/template>/igm.exec(data);
+        //     if (a && a[1]) {
+        //         var fn = new Function('return (' + a[1] + ')');
+        //         var data = fn();
+        //         data = data.slice(0, 10);
+        //         data.forEach(function(item) {
+        //             var time = (new Date(item['data'])).toLocaleString();
+        //             time = time_reg.exec(time);
+        //             item['time'] = time && time[0] || ''
+        //         });
+        //         return data;
+        //     }
 
-            return []
-        }
+        //     return []
+        // }
     },
 
     "fequan": {
