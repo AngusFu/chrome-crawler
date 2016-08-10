@@ -1,5 +1,5 @@
 
-## chrome-creeper
+## chrome-crawler
 
 ### 说明
 
@@ -32,7 +32,16 @@
         }
     ```
 
-7. 添加自己喜欢的网页：修改 `./js/source.js` OR 点击页面上的“+”按钮填写对应的网址及选择器。
+7. 添加自己喜欢的网页：修改 `./js/source.js` OR 点击页面上的“+”按钮填写对应的网址及选择器，也支持添加 rss XML 页面。
+
+### rss 页面添加
+
+| 内容          | 值示例        | 备注          |
+| ------------- |:-------------:|:-------------:|
+| 单列选择器    | rss.channel.entry |  `.` 分隔父子层级 |
+| 内容选择器    | title             | 使用标签名        |
+| 属性选择器    | link.$href        | 使用标签属性      |
+
 
 ### 
 
@@ -40,7 +49,11 @@
 
 - <del>添加自定义页面</del>
 
-- 自定义数据来源修改
+- <del>自定义数据来源</del>
+
+- 代码重构
+
+- 修改编辑数据源
 
 - 添加更加完备的日期格式化（选择器、正则匹配）
 
@@ -52,3 +65,4 @@
 - <a href="mailto:angusfu1126@qq.com">angusfu1126@qq.com</a>
 
 - [https://segmentfault.com/u/wemlin](https://segmentfault.com/u/wemlin)
+
