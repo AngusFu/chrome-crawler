@@ -213,7 +213,7 @@ var sourceList = {
             var time = url.match(time_reg);
             return {
                 url: $colum.find("a").attr("href"),
-                title: $colum.find(".mod-post-tit").text(),
+                title: $colum.find("a").attr("title"),
                 time: (time instanceof Array) ? time[0] : ""
             }
         }

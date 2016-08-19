@@ -168,6 +168,9 @@ function processData(data) {
                .replace(/<input([^>])+results=/gim, '<input')
                .replace(/<body([^>])*>/gim, '<body>')
                .trim();
+
+    if (data.indexOf('<body>') < 0) return data;
+    
     return data.substring(
                 data.indexOf('<body>') + 6,
 
