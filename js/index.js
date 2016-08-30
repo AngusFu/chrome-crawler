@@ -210,13 +210,29 @@ function parseData(data, source) {
                 return info;
             }
         }
+
         data = data.slice(0, source.max);
         info = data.map(function(item) {
+            var getText = function(data, keys) {
+                keys = keys.split('.');
+                var i = 0;
+
+                while (i < keys.length) {
+                    if (data[keys[i]]) {
+                        data = data[keys[i++]];
+                    } else {
+                        return '';
+                    }
+                }
+
+                return typeof data !== 'string' ? data['_'] : data;
+            };
+
             var cdata = /^\<\!\[CDARA\[(.+)\]\]>$/,
-                title = item[source.title] || '',
+                title = getText(item, source.title),
                 match = title.match(cdata);
 
-            var time = item[source.time];
+            var time = getText(item, source.time);
             if (!time) {
                 for (var k in item) {
                     if ({}.hasOwnProperty.call(item, k)) {
@@ -228,7 +244,7 @@ function parseData(data, source) {
                 }
             }
 
-            var url = item[source.link];
+            var url = getText(item, source.link);
             if (url && typeof url !== 'string') {
                 url = url.$.href;
             }
@@ -263,6 +279,7 @@ function parseData(data, source) {
     var temp = null;
 
     var $colum = null;
+
     // 如果是 localStorage 中配置的 selector
     if (source._c_) {
         for (var i = 0, len = $columns.length; i < len && i < (source.max || 10); i++) {
