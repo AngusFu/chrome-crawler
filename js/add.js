@@ -1,5 +1,3 @@
-
-
 $('#addRes').click(function() {
     $('#addPopCon').fadeIn(500);
 });
@@ -9,6 +7,7 @@ $('#addPopCon').on('click', function(e) {
         $('#addPopCon').fadeOut(500);
     }
 });
+
 $('#addPop button').click(function() {
     var cacheData = localStorage['__user__data__'];
 

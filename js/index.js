@@ -158,25 +158,25 @@ function initData(noCacheRender) {
  */
 function processData(data) {
     data = data.replace(/src=/gim, 'xsrc=')
-               .replace(/<img\s*src=/gim, 'xsrc=')
-               .replace(/srcset=/gim, 'xsrcset=')
-               .replace(/<img/gim, '<input')
-               .replace(/\.(jpg|jpeg|webp|png|gif)/gim, '')
-               .replace(/<script/gim, '<template')
-               .replace(/script>/gim, 'template>')
-               .replace(/<link/gim, '<meta')
-               .replace(/<input([^>])+results=/gim, '<input')
-               .replace(/<body([^>])*>/gim, '<body>')
-               .trim();
+            .replace(/<img\s*src=/gim, 'xsrc=')
+            .replace(/srcset=/gim, 'xsrcset=')
+            .replace(/<img/gim, '<input')
+            .replace(/\.(jpg|jpeg|webp|png|gif)/gim, '')
+            .replace(/<script/gim, '<template')
+            .replace(/script>/gim, 'template>')
+            .replace(/<link/gim, '<meta')
+            .replace(/<input([^>])+results=/gim, '<input')
+            .replace(/<body([^>])*>/gim, '<body>')
+            .trim();
 
     if (data.indexOf('<body>') < 0) return data;
     
     return data.substring(
-                data.indexOf('<body>') + 6,
+        data.indexOf('<body>') + 6,
 
-                data.lastIndexOf('</body>') > 0
-                        ? data.lastIndexOf('</body>')
-                        : data.length
+        data.lastIndexOf('</body>') > 0
+            ? data.lastIndexOf('</body>')
+            : data.length
     );
 }
 
@@ -271,14 +271,8 @@ function parseData(data, source) {
         return info;
     }
 
-    var div = document.createElement('div');
-
-    div.innerHTML = data;
-
-    var $columns = $(div).find(source.colum);
-    var temp = null;
-
-    var $colum = null;
+    var $columns = $('<div/>').html(data).find(source.colum);
+    var temp = null, $colum = null;
 
     // 如果是 localStorage 中配置的 selector
     if (source._c_) {
@@ -302,14 +296,12 @@ function parseData(data, source) {
     }
 
     for (var i = 0, len = $columns.length; i < len && i < (source.max || 10); i++) {
-
         temp = source.handle.call(source, $columns.eq(i));
 
         if (temp) {
             if (!/^http/.test(temp.url)) {
                 temp.url = (new URL(temp.url, source.url)).href;
             }
-
             temp.title = temp.title.trim();
             info.push(temp);
         }
@@ -328,7 +320,7 @@ function getRenderContent(info, source, id) {
         return prev + `<li class="mb-item">
             <a href="${curr.url}" target="_blank" class="mb-title ${curr._is_new_ ? 'new' : ''}">
                 ${curr.title}
-                <span class="blog-time">${curr.time}</span>
+                <span class="blog-time">${window.getDate(curr.time)}</span>
             </a>
         </li>`;
     }, '');

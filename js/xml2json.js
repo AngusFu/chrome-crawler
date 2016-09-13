@@ -1,4 +1,3 @@
-
 /**
  * jQuery plugin to convert a given $.ajax response xml object to json.
  *

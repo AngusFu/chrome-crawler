@@ -37,15 +37,13 @@ var sourceList = {
     },
 
     "众成翻译": {
-        url: 'http://www.zcfy.cc/article',
-        colum: '.article-list li',
+        url: 'http://www.zcfy.cc/article/archive',
+        colum: '.article-list ol li',
         handle: function($colum) {
-            var time = TIME_REG_1.exec($colum.find('.date').text());
-
             return {
                 url: $colum.find('a').attr('href'),
-                title: $colum.find('a .tit').text().replace(/\d{4}年\d{1,2}月\d{1,2}日\d{1,2}:\d{1,2}:\d{1,2}/, ''),
-                time: time && time[0] || ''
+                title: $colum.find('a').text(),
+                time: ''
             }
         }
     },

@@ -1,8 +1,5 @@
-
 // http://www.zhangxinxu.com/wordpress/2012/11/page-visibility-api-introduction-extend/
-
-
-var pageVisibility = (function() {
+window.pageVisibility = (function() {
     var prefixSupport, keyWithPrefix = function(prefix, key) {
         if (prefix !== "") {
             // 首字母大写
