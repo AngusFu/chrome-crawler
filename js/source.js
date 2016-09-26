@@ -306,6 +306,8 @@ var sourceList = {
     },
 };
 
+window.customData && $.extend(sourceList, customData);
+
 // 从 localStorage 中读取用户自定义的配置
 //    _c_: true
 //    url: 'http://xxx.com/blog'
