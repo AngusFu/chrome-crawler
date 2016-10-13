@@ -112,9 +112,9 @@ function initData(noCacheRender) {
             url: this.url,
             method: 'get',
             dataType: 'text'
-        }).done(function(data) {
-            data = nowSource['_r_'] && data || processData(data);
-            info = parseData(data, nowSource);
+        }).done(function(_data) {
+            var data = nowSource['_r_'] && _data || processData(_data);
+            info = parseData(data, nowSource, _data);
 
             // 缓存 10 min
             store.set(id, JSON.stringify(info), 60 * 10);
@@ -190,9 +190,9 @@ function processData(data) {
  * @return {Array}
  * 
  */
-function parseData(data, source) {
+function parseData(data, source, raw) {
     if (typeof source.parse === 'function') {
-        return source.parse(data);
+        return source.parse(data, raw);
     }
 
     var info = [];
@@ -312,6 +312,17 @@ function parseData(data, source) {
 
 
 /**
+ * Escape the given string of `html`.
+ */
+function escapeHtml(html){
+  return String(html)
+    .replace(/&(?!\w+;)/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+};
+
+/**
  * 生成内容
  */
 function getRenderContent(info, source, id) {
@@ -319,9 +330,9 @@ function getRenderContent(info, source, id) {
     var linksText = info.reduce(function(prev, curr) {
         return prev + `<li class="mb-item">
             <a href="${curr.url}" target="_blank" class="mb-title ${curr._is_new_ ? 'new' : ''}">
-                ${curr.title}
-                <span class="blog-time">${window.getDate(curr.time)}</span>
+                ${escapeHtml(curr.title)}
             </a>
+            <span class="blog-time">${window.getDate(curr.time)}</span>
         </li>`;
     }, '');
 
@@ -332,6 +343,7 @@ function getRenderContent(info, source, id) {
  * 更新 DOM
  */
 function updateDOMContent(index, id, info, source) {
+    if (!info) return;
     var content = getRenderContent(info, source, id);
 
     $('#dom_' + index).empty().html(content);

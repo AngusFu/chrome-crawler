@@ -58,6 +58,11 @@ li {
     transition: background-color .3s;
 }
 
+.mb-item {
+    display: -webkit-box;
+    display: flex; 
+}
+
 a {
     outline: none;
     color: #333;
@@ -69,15 +74,19 @@ a {
     padding: 0 20px;
     line-height: 30px;
     -webkit-transition: padding .3s;
-}
-
-.mb-item:hover a {
-    /*padding-left: 30px;*/
+    transition: padding .3s;
+    
+    flex: 1;
+    -webkit-box-flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
 
 .blog-time {
     font-size: 13px;
-    float: right;
+    line-height: 30px;
 }
 
 .left-side {

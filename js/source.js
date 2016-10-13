@@ -6,6 +6,49 @@ var TIME_REG_4 = /\d{4}\.\d{2}\.\d{2}/; //匹配XXXX.XX.XX
 var time_reg = /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/;
 
 var sourceList = {
+    "Angular@vsavkin": {
+        url: "https://vsavkin.com/@vsavkin",
+        // "colum": ".blockGroup-list>div",
+        parse: function (data, raw) {
+            raw = raw.replace(/src=/gim, 'xsrc=')
+                .replace(/<img\s*src=/gim, 'xsrc=')
+                .replace(/srcset=/gim, 'xsrcset=');
+            
+            return Array.from($(raw).find('.js-profileStreamBlock .streamItem-card')).slice(0, 5).map(function (el) {
+                var $link = $(el).find('.layoutSingleColumn a');
+                return {
+                    title: $link.find('h3').text(),
+                    url: $link.attr('href')
+                }
+            });
+        },
+        // "title": ".postArticle a h3",
+        // "time": "",
+        // "link": ".postArticle a",
+        "max": 5
+    },
+    "thoughtram": {
+        "_c_": true,
+        "url": "http://blog.thoughtram.io/categories/angular-2/",
+        "colum": ".thtrm-three-column-list li",
+        "title": "h2",
+        "time": "",
+        "link": ".thtrm-cta thtrm-cta--small",
+        "max": 5
+    },
+    "W3cplus": {
+        url: "http://www.w3cplus.com/",
+        colum: ".region-content .node-blog",
+        handle: function($colum) {
+            var time = $colum.find(".submitted").text().match(TIME_REG_2);
+            return {
+                url: $colum.find("h1>a").attr("href"),
+                title: $colum.find("h1>a").text(),
+                time: (time instanceof Array) ? time[0] : ""
+            }
+        }
+    },
+
     "W3ctech": {
         url: "http://www.w3ctech.com/topic/index",
         colum: ".bd_box .topic_list_content",
@@ -176,19 +219,19 @@ var sourceList = {
     },
 
 
-    "FEX": {
-        url: "http://fex.baidu.com/",
-        colum: ".container .post-list>li",
-        handle: function($colum) {
-            var time = $colum.find(".date").text().split(" ");
-            time = time.slice(time.length - 3, time.length).join(" ");
-            return {
-                url: $colum.find("a").attr("href"),
-                title: $colum.find("p").text(),
-                time: time
-            }
-        }
-    },
+    // "FEX": {
+    //     url: "http://fex.baidu.com/",
+    //     colum: ".container .post-list>li",
+    //     handle: function($colum) {
+    //         var time = $colum.find(".date").text().split(" ");
+    //         time = time.slice(time.length - 3, time.length).join(" ");
+    //         return {
+    //             url: $colum.find("a").attr("href"),
+    //             title: $colum.find("p").text(),
+    //             time: time
+    //         }
+    //     }
+    // },
 
 
     "Taobao FED": {
@@ -215,35 +258,11 @@ var sourceList = {
                 time: (time instanceof Array) ? time[0] : ""
             }
         }
-        // url: "https://aotu.io/atom.xml",
-        // _r_: true,
-        // colum: 'feed.entry',
-        // title: 'title',
-        // link: 'link',
-        // time: 'updated'
-
-        // parse: function(data) {
-        //     var a = /<template>var POSTS=(.+\]\}\])<\/template>/igm.exec(data);
-        //     if (a && a[1]) {
-        //         var fn = new Function('return (' + a[1] + ')');
-        //         var data = fn();
-        //         data = data.slice(0, 10);
-        //         data.forEach(function(item) {
-        //             var time = (new Date(item['data'])).toLocaleString();
-        //             time = time_reg.exec(time);
-        //             item['time'] = time && time[0] || ''
-        //         });
-        //         return data;
-        //     }
-
-        //     return []
-        // }
     },
 
     "fequan": {
         url: "http://fequan.com/",
         colum: ".review-list p",
-        max: 10,
         handle: function($colum) {
             return {
                 url: $colum.find('a').first().attr('href'),
@@ -253,57 +272,43 @@ var sourceList = {
         }
     },
 
+    // "TangGuangYao": {
+    //     url: "http://tangguangyao.github.io/archives/",
+    //     colum: "article.post",
+    //     handle: function($colum) {
+    //         var time = $colum.find(".post-meta time").attr('content');
+    //         return {
+    //             url: 'http://tangguangyao.github.io' + $colum.find(".post-title-link").attr("href"),
+    //             title: $colum.find(".post-title").text(),
+    //             time: time
+    //         }
+    //     }
+    // },
 
-    "W3cplus": {
-        url: "http://www.w3cplus.com/",
-        colum: ".region-content .node-blog",
-        handle: function($colum) {
-            var time = $colum.find(".submitted").text().match(TIME_REG_2);
-            return {
-                url: $colum.find("h1>a").attr("href"),
-                title: $colum.find("h1>a").text(),
-                time: (time instanceof Array) ? time[0] : ""
-            }
-        }
-    },
+    // "Web前端开发": {
+    //     url: "http://www.css88.com/",
+    //     colum: ".site-content .post",
+    //     handle: function($colum) {
+    //         var time = $colum.find(".entry-date").text().match(TIME_REG_1);
+    //         return {
+    //             url: $colum.find(".entry-title a").attr("href"),
+    //             title: $colum.find(".entry-title").text(),
+    //             time: (time instanceof Array) ? time[0] : ""
+    //         }
+    //     }
+    // },
 
-    "TangGuangYao": {
-        url: "http://tangguangyao.github.io/archives/",
-        colum: "article.post",
-        handle: function($colum) {
-            var time = $colum.find(".post-meta time").attr('content');
-            return {
-                url: 'http://tangguangyao.github.io' + $colum.find(".post-title-link").attr("href"),
-                title: $colum.find(".post-title").text(),
-                time: time
-            }
-        }
-    },
-
-    "Web前端开发": {
-        url: "http://www.css88.com/",
-        colum: ".site-content .post",
-        handle: function($colum) {
-            var time = $colum.find(".entry-date").text().match(TIME_REG_1);
-            return {
-                url: $colum.find(".entry-title a").attr("href"),
-                title: $colum.find(".entry-title").text(),
-                time: (time instanceof Array) ? time[0] : ""
-            }
-        }
-    },
-
-    "Isux": {
-        url: "https://isux.tencent.com/category/fd",
-        colum: ".masonry-post",
-        handle: function($colum) {
-            return {
-                url: $colum.find("h2 a").attr("href"),
-                title:$colum.find("h2 a").text(),
-                time: $colum.find('.isux-date').text()
-            }
-        }
-    },
+    // "Isux": {
+    //     url: "https://isux.tencent.com/category/fd",
+    //     colum: ".masonry-post",
+    //     handle: function($colum) {
+    //         return {
+    //             url: $colum.find("h2 a").attr("href"),
+    //             title:$colum.find("h2 a").text(),
+    //             time: $colum.find('.isux-date').text()
+    //         }
+    //     }
+    // },
 };
 
 window.customData && $.extend(sourceList, customData);
@@ -329,7 +334,7 @@ var l = 0;
 source.keys = [];
 for (var k in sourceList) {
     source.keys.push(k);
-    sourceList[k].max = sourceList[k].max || 10;
+    sourceList[k].max = sourceList[k].max || 5;
     l++;
 }
 source.length = l;
