@@ -33,7 +33,7 @@ var sourceList = {
         "colum": ".thtrm-three-column-list li",
         "title": "h2",
         "time": "",
-        "link": ".thtrm-cta thtrm-cta--small",
+        "link": ".thtrm-article-card-content a",
         "max": 5
     },
     "W3cplus": {
