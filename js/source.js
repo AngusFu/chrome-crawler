@@ -36,6 +36,33 @@ var sourceList = {
         "link": ".thtrm-cta.thtrm-cta--small",
         "max": 5
     },
+    "Angular@mgechev": {
+        "_c_": true,
+        "url": "http://blog.mgechev.com/posts/",
+        "colum": "#index article",
+        "title": "h2 a",
+        "time": "",
+        "link": "h2 a",
+        "max": "5"
+    },
+    "Angular@toddmotto": {
+        "_c_": true,
+        "url": "https://toddmotto.com/",
+        "colum": ".posts .post-single",
+        "title": ".post-single__title a",
+        "time": ".post__meta",
+        "link": ".post-single__title a",
+        "max": "5"
+    },
+    "wolksoftware": {
+        "_c_": true,
+        "url": "http://blog.wolksoftware.com/",
+        "colum": "#container article",
+        "title": ".article_title a",
+        "time": "",
+        "link": ".article_title a",
+        "max": "5"
+    },
     "W3cplus": {
         url: "http://www.w3cplus.com/",
         colum: ".region-content .node-blog",
@@ -193,17 +220,17 @@ var sourceList = {
     // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
     // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
     // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
-    "前端观察": {
-        url: "https://www.qianduan.net/",
-        colum: ".main-content .post",
-        handle: function($colum) {
-            return {
-                url: $colum.find(".post-title a").attr("href"),
-                title: $colum.find(".post-title a").text(),
-                time: $colum.find(".post-date").attr("datetime")
-            }
-        }
-    },
+//     "前端观察": {
+//         url: "https://www.qianduan.net/",
+//         colum: ".main-content .post",
+//         handle: function($colum) {
+//             return {
+//                 url: $colum.find(".post-title a").attr("href"),
+//                 title: $colum.find(".post-title a").text(),
+//                 time: $colum.find(".post-date").attr("datetime")
+//             }
+//         }
+//     },
 
     "AlloyTeam": {
         url: "http://www.alloyteam.com",
