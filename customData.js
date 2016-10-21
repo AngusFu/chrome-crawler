@@ -71,6 +71,24 @@ window.customData = {
         "link": ".post-title a",
         "max": 5
     },
+    "前端开发日报": {
+        "_c_": true,
+        "url": "https://github.com/kujian/frontendDaily/issues",
+        "colum": ".Box-body.js-navigation-container .Box-body-row",
+        "title": "a",
+        "time": "",
+        "link": "a",
+        "max": 3
+    },
+    "BaiduEFE": {
+        "_c_": true,
+        "url": "http://efe.baidu.com/",
+        "colum": "main > .article-index",
+        "title": "h2 a",
+        "time": ".article-meta",
+        "link": "h2 a",
+        "max": "5"
+    },
     "DDFE": {
         "_c_": true,
         "url": "https://defed.github.io/archives/",
