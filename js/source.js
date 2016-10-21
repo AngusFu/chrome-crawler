@@ -287,17 +287,17 @@ var sourceList = {
         }
     },
 
-    "fequan": {
-        url: "http://fequan.com/",
-        colum: ".review-list p",
-        handle: function($colum) {
-            return {
-                url: $colum.find('a').first().attr('href'),
-                title: $colum.text().trim(),
-                time: ''
-            }
-        }
-    },
+//     "fequan": {
+//         url: "http://fequan.com/",
+//         colum: ".review-list p",
+//         handle: function($colum) {
+//             return {
+//                 url: $colum.find('a').first().attr('href'),
+//                 title: $colum.text().trim(),
+//                 time: ''
+//             }
+//         }
+//     },
 
     // "TangGuangYao": {
     //     url: "http://tangguangyao.github.io/archives/",
