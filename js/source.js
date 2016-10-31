@@ -6,6 +6,16 @@ var TIME_REG_4 = /\d{4}\.\d{2}\.\d{2}/; //匹配XXXX.XX.XX
 var time_reg = /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/;
 
 var sourceList = {
+    "Nicholas Zakas": {
+        "_c_": true,
+        "url": "https://www.nczonline.net/",
+        "colum": ".post-content .post-snippet",
+        "title": ".post-head h3 a",
+        "time": ".post-head .byline",
+        "link": ".post-head h3 a",
+        "max": "6"
+    },
+    
     "Angular@vsavkin": {
         url: "https://vsavkin.com/@vsavkin",
         // "colum": ".blockGroup-list>div",
