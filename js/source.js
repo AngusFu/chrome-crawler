@@ -6,16 +6,15 @@ var TIME_REG_4 = /\d{4}\.\d{2}\.\d{2}/; //匹配XXXX.XX.XX
 var time_reg = /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/;
 
 var sourceList = {
-    "Nicholas Zakas": {
+    "ngUniversity": {
         "_c_": true,
-        "url": "https://www.nczonline.net/",
-        "colum": ".post-content .post-snippet",
-        "title": ".post-head h3 a",
-        "time": ".post-head .byline",
-        "link": ".post-head h3 a",
-        "max": "6"
+        "url": "http://blog.angular-university.io/",
+        "colum": "article.post",
+        "title": ".post-title a",
+        "time": ".post-date",
+        "link": ".post-title a",
+        "max": "10"
     },
-    
     "Angular@vsavkin": {
         url: "https://vsavkin.com/@vsavkin",
         // "colum": ".blockGroup-list>div",
@@ -73,6 +72,17 @@ var sourceList = {
         "link": ".article_title a",
         "max": "5"
     },
+    
+    "Nicholas Zakas": {
+        "_c_": true,
+        "url": "https://www.nczonline.net/",
+        "colum": ".post-content .post-snippet",
+        "title": ".post-head h3 a",
+        "time": ".post-head .byline",
+        "link": ".post-head h3 a",
+        "max": "6"
+    },
+    
     "W3cplus": {
         url: "http://www.w3cplus.com/",
         colum: ".region-content .node-blog",
@@ -255,6 +265,15 @@ var sourceList = {
         }
     },
 
+    "meowni.ca": {
+        "_c_": true,
+        "url": "http://meowni.ca/",
+        "colum": ".listing li",
+        "title": "a",
+        "time": "span",
+        "link": "a",
+        "max": "6"
+    },
 
     // "FEX": {
     //     url: "http://fex.baidu.com/",
