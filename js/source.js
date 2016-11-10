@@ -6,6 +6,15 @@ var TIME_REG_4 = /\d{4}\.\d{2}\.\d{2}/; //匹配XXXX.XX.XX
 var time_reg = /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/;
 
 var sourceList = {
+    "ngUniversity": {
+        "_c_": true,
+        "url": "http://blog.angular-university.io/",
+        "colum": "article.post",
+        "title": ".post-title a",
+        "time": ".post-date",
+        "link": ".post-title a",
+        "max": "10"
+    },
     "Angular@vsavkin": {
         url: "https://vsavkin.com/@vsavkin",
         // "colum": ".blockGroup-list>div",
@@ -245,6 +254,15 @@ var sourceList = {
         }
     },
 
+    "meowni.ca": {
+        "_c_": true,
+        "url": "http://meowni.ca/",
+        "colum": ".listing li",
+        "title": "a",
+        "time": "span",
+        "link": "a",
+        "max": "6"
+    },
 
     // "FEX": {
     //     url: "http://fex.baidu.com/",
