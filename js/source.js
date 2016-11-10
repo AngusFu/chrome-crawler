@@ -72,6 +72,17 @@ var sourceList = {
         "link": ".article_title a",
         "max": "5"
     },
+    
+    "Nicholas Zakas": {
+        "_c_": true,
+        "url": "https://www.nczonline.net/",
+        "colum": ".post-content .post-snippet",
+        "title": ".post-head h3 a",
+        "time": ".post-head .byline",
+        "link": ".post-head h3 a",
+        "max": "6"
+    },
+    
     "W3cplus": {
         url: "http://www.w3cplus.com/",
         colum: ".region-content .node-blog",
