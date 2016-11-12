@@ -8,6 +8,7 @@ window.customData = {
     //     "link": "id",
     //     "max": 5
     // },
+
     // "teabyii@简书": {
     //     "_c_": true,
     //     "url": "http://www.jianshu.com/users/fd3afb9c7114/latest_articles",
@@ -17,6 +18,7 @@ window.customData = {
     //     "link": ".title a",
     //     "max": 5
     // },
+
     // "范老板": {
     //     "_c_": true,
     //     "url": "http://www.jianshu.com/users/5f902876a97a/latest_articles",
@@ -26,6 +28,7 @@ window.customData = {
     //     "link": ".title a",
     //     "max": 5
     // },
+
     // "XGFE": {
     //     "_c_": true,
     //     "url": "http://xgfe.github.io/archives/",
@@ -35,6 +38,7 @@ window.customData = {
     //     "link": "h1 a",
     //     "max": 5
     // },
+
     // "SVGTrick": {
     //     "_c_": true,
     //     "url": "http://svgtrick.com/",
@@ -44,6 +48,7 @@ window.customData = {
     //     "link": ".trick-card-title",
     //     "max": "8"
     // },
+
     "icodeit": {
         "_r_": true,
         "url": "http://icodeit.org/atom.xml",
@@ -53,6 +58,7 @@ window.customData = {
         "link": "id",
         "max": 5
     },
+
     "紫云飞": {
         "_c_": true,
         "url": "http://www.cnblogs.com/ziyunfei/",
@@ -62,6 +68,7 @@ window.customData = {
         "link": ".postTitle a",
         "max": 5
     },
+
     "jackpu": {
         "_c_": true,
         "url": "http://www.jackpu.com/tag/web/",
@@ -71,15 +78,17 @@ window.customData = {
         "link": ".post-title a",
         "max": 5
     },
-    "前端开发日报": {
-        "_c_": true,
-        "url": "https://github.com/kujian/frontendDaily/issues",
-        "colum": ".Box-body.js-navigation-container .Box-body-row",
-        "title": "a",
-        "time": "",
-        "link": "a",
-        "max": 3
-    },
+
+    // "前端开发日报": {
+    //     "_c_": true,
+    //     "url": "https://github.com/kujian/frontendDaily/issues",
+    //     "colum": ".Box-body.js-navigation-container .Box-body-row",
+    //     "title": "a",
+    //     "time": "",
+    //     "link": "a",
+    //     "max": 3
+    // },
+
     "BaiduEFE": {
         "_c_": true,
         "url": "http://efe.baidu.com/",
@@ -89,6 +98,7 @@ window.customData = {
         "link": "h2 a",
         "max": "5"
     },
+
     "DDFE": {
         "_c_": true,
         "url": "https://defed.github.io/archives/",
@@ -98,6 +108,7 @@ window.customData = {
         "link": "h1 a",
         "max": 5
     },
+    
     "饿了么": {
         "_r_": true,
         "url": "https://fe.ele.me/rss/",

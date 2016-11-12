@@ -38,7 +38,6 @@ var sourceList = {
 
     "Angular@vsavkin": {
         url: "https://vsavkin.com/@vsavkin",
-        // "colum": ".blockGroup-list>div",
         parse: function (data, raw) {
             raw = raw.replace(/src=/gim, 'xsrc=')
                 .replace(/<img\s*src=/gim, 'xsrc=')
@@ -52,11 +51,13 @@ var sourceList = {
                 }
             });
         },
+        // "colum": ".blockGroup-list>div",
         // "title": ".postArticle a h3",
         // "time": "",
         // "link": ".postArticle a",
         "max": 5
     },
+
     "thoughtram": {
         "_c_": true,
         "url": "http://blog.thoughtram.io/categories/angular-2/",
@@ -66,6 +67,7 @@ var sourceList = {
         "link": ".thtrm-cta.thtrm-cta--small",
         "max": 5
     },
+
     "Angular@mgechev": {
         "_c_": true,
         "url": "http://blog.mgechev.com/posts/",
@@ -75,6 +77,7 @@ var sourceList = {
         "link": "h2 a",
         "max": "5"
     },
+
     "Angular@toddmotto": {
         "_c_": true,
         "url": "https://toddmotto.com/",
@@ -84,6 +87,7 @@ var sourceList = {
         "link": ".post-single__title a",
         "max": "5"
     },
+
     "wolksoftware": {
         "_c_": true,
         "url": "http://blog.wolksoftware.com/",
@@ -171,7 +175,6 @@ var sourceList = {
         }
     },
 
-
     "阮一峰": {
         url: "http://www.ruanyifeng.com/blog/javascript/",
         colum: "#alpha .module-list-item",
@@ -252,26 +255,17 @@ var sourceList = {
         }
     },
 
-    // 无能为力啊
-    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
-    // link:</assets/css/screen.css?v=24b6e847ee>; rel=preload; as=style
-    // link:<//www.qianduan.net/img/give-me-five/qianduan_wechat.jpg>; rel=preload; as=image
-    // link:<//www.qianduan.net/img/give-me-five/da-shang.jpg>; rel=preload; as=image
-    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
-    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
-    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
-    // link:</content/images/2015/10/avatar.jpg>; rel=preload; as=image
-//     "前端观察": {
-//         url: "https://www.qianduan.net/",
-//         colum: ".main-content .post",
-//         handle: function($colum) {
-//             return {
-//                 url: $colum.find(".post-title a").attr("href"),
-//                 title: $colum.find(".post-title a").text(),
-//                 time: $colum.find(".post-date").attr("datetime")
-//             }
-//         }
-//     },
+    // "前端观察": {
+    //     url: "https://www.qianduan.net/",
+    //     colum: ".main-content .post",
+    //     handle: function($colum) {
+    //         return {
+    //             url: $colum.find(".post-title a").attr("href"),
+    //             title: $colum.find(".post-title a").text(),
+    //             time: $colum.find(".post-date").attr("datetime")
+    //         }
+    //     }
+    // },
 
     "AlloyTeam": {
         url: "http://www.alloyteam.com",
@@ -310,7 +304,6 @@ var sourceList = {
     //     }
     // },
 
-
     "Taobao FED": {
         url: 'http://taobaofed.org/',
         colum: '.article-summary',
@@ -337,17 +330,17 @@ var sourceList = {
         }
     },
 
-//     "fequan": {
-//         url: "http://fequan.com/",
-//         colum: ".review-list p",
-//         handle: function($colum) {
-//             return {
-//                 url: $colum.find('a').first().attr('href'),
-//                 title: $colum.text().trim(),
-//                 time: ''
-//             }
-//         }
-//     },
+    // "fequan": {
+    //     url: "http://fequan.com/",
+    //     colum: ".review-list p",
+    //     handle: function($colum) {
+    //         return {
+    //             url: $colum.find('a').first().attr('href'),
+    //             title: $colum.text().trim(),
+    //             time: ''
+    //         }
+    //     }
+    // },
 
     // "TangGuangYao": {
     //     url: "http://tangguangyao.github.io/archives/",
