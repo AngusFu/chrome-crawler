@@ -6,6 +6,26 @@ var TIME_REG_4 = /\d{4}\.\d{2}\.\d{2}/; //匹配XXXX.XX.XX
 var time_reg = /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/;
 
 var sourceList = {
+    "bertalan@risingstack": {
+        "_c_": true,
+        "url": "https://blog.risingstack.com/author/bertalan/",
+        "colum": ".main-inner article",
+        "title": "h1 a",
+        "time": "",
+        "link": "h1 a",
+        "max": "8"
+    },
+
+    "risingstack": {
+        "_c_": true,
+        "url": "https://blog.risingstack.com",
+        "colum": ".main-inner article",
+        "title": "h1 a",
+        "time": ".post-time .fulldate",
+        "link": "h1 a",
+        "max": "8"
+    },
+
     "ngUniversity": {
         "_c_": true,
         "url": "http://blog.angular-university.io/",
@@ -15,6 +35,7 @@ var sourceList = {
         "link": ".post-title a",
         "max": "10"
     },
+
     "Angular@vsavkin": {
         url: "https://vsavkin.com/@vsavkin",
         // "colum": ".blockGroup-list>div",
