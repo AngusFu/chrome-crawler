@@ -182,7 +182,7 @@ a {
     }
 }
 
-@media screen and (min-width: 1120px){
+@media screen and (min-width: 1400px){
     .show-side .content {
         width: 900px;
     }
