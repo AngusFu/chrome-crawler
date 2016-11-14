@@ -108,6 +108,16 @@ var sourceList = {
         "max": "6"
     },
     
+    "2ality": {
+        "_c_":true,
+        "url":"http://www.2ality.com/",
+        "colum":".blog-posts .date-posts",
+        "title":"h3 a",
+        "time":"",
+        "link":"h3 a",
+        "max":"8"
+    },
+
     "W3cplus": {
         url: "http://www.w3cplus.com/",
         colum: ".region-content .node-blog",
@@ -164,15 +174,13 @@ var sourceList = {
     },
 
     "EtherDream": {
-        url: "http://www.cnblogs.com/index-html/",
-        colum: ".postTitle",
-        handle: function($colum) {
-            return {
-                url: $colum.find("a").attr("href"),
-                title: $colum.find("a").text(),
-                time: $colum.siblings('.dayTitle').text()
-            }
-        }
+        "_r_": true,
+        url: "http://feed.cnblogs.com/blog/u/83633/rss",
+        "colum": "feed.entry",
+        "title": "title",
+        "time": "published",
+        "link": "id",
+        "max": 5
     },
 
     "阮一峰": {
