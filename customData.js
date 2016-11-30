@@ -108,7 +108,7 @@ window.customData = {
         "link": "h1 a",
         "max": 5
     },
-    
+
     "饿了么": {
         "_r_": true,
         "url": "https://fe.ele.me/rss/",
@@ -117,5 +117,42 @@ window.customData = {
         "time": "pubDate",
         "link": "link",
         "max": 5
+    },
+
+    "css-tricks": {
+        "_c_": true,
+        "url": "https://css-tricks.com/",
+        "colum": ".article-card",
+        "title": "h2 a",
+        "time": ".bar-time",
+        "link": "h2 a",
+        "max": 10
+    },
+    "mumu": {
+        "_c_": true,
+        "url": "https://my.oschina.net/mumu/blog",
+        "colum": ".list-item",
+        "title": ".blog-title",
+        "time": ".time",
+        "link": ".blog-title",
+        "max": "6"
+    },
+    "csswizardry": {
+        "_c_": true,
+        "url": "http://csswizardry.com/",
+        "colum": ".list-ui__item",
+        "title": ".post__title a",
+        "time": ".post__time",
+        "link": ".post__title a",
+        "max": "6"
+    },
+    "simurai.com": {
+        "_c_": true,
+        "url": "http://simurai.com/blog/",
+        "colum": ".Index-item--blog",
+        "title": ".Index-meta h2",
+        "time": ".Index-meta  time",
+        "link": ".Index-meta",
+        "max": "6"
     }
 }
