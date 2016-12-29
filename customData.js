@@ -154,5 +154,32 @@ window.customData = {
         "time": ".Index-meta  time",
         "link": ".Index-meta",
         "max": "6"
+    },
+    "mgechev": {
+        "_c_": true,
+        "url": "http://blog.mgechev.com/posts/",
+        "colum": "#index article",
+        "title": "h2 a",
+        "time": "",
+        "link": "h2 a",
+        "max": "8"
+    },
+    "tphangout": {
+        "_c_": true,
+        "url": "http://tphangout.com/",
+        "colum": ".site-main > article",
+        "title": ".entry-title a",
+        "time": ".entry-date",
+        "link": ".entry-title a",
+        "max": "10"
+    },
+    "souche": {
+        "_c_": true,
+        "url": "https://blog.souche.com/",
+        "colum": ".article-list > article",
+        "title": ".c-post-list__title a",
+        "time": ".c-post-list__meta",
+        "link": ".c-post-list__title a",
+        "max": 10
     }
 }
