@@ -38,10 +38,10 @@ window.customData = {
     "2ality": {
         "_c_":true,
         "url":"http://www.2ality.com/",
-        "colum":".blog-posts .date-posts",
-        "title":"h3 a",
-        "time":"",
-        "link":"h3 a"
+        "colum":"#page-core > div > div:not(.index-date)",
+        "title":"h2 a",
+        "time":".date-and-tags",
+        "link":"h2 a"
     },
 
     "W3cplus": {
